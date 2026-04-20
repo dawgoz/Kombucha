@@ -2,19 +2,16 @@
 // Language Toggle
 // ===========================
 const langToggle = document.getElementById('langToggle');
-const langOptions = langToggle.querySelectorAll('.lang-option');
-let currentLang = 'en';
+let currentLang = localStorage.getItem('lang') || 'lt';
 
-langToggle.addEventListener('click', (e) => {
-    const clicked = e.target.closest('.lang-option');
-    if (!clicked || clicked.dataset.lang === currentLang) return;
+langToggle.textContent = currentLang === 'en' ? 'LT' : 'EN';
+document.documentElement.lang = currentLang;
 
-    currentLang = clicked.dataset.lang;
-
-    langOptions.forEach(opt => opt.classList.remove('active'));
-    clicked.classList.add('active');
-
+langToggle.addEventListener('click', () => {
+    currentLang = currentLang === 'en' ? 'lt' : 'en';
+    langToggle.textContent = currentLang === 'en' ? 'LT' : 'EN';
     document.documentElement.lang = currentLang;
+    localStorage.setItem('lang', currentLang);
     updateLanguage();
 });
 
@@ -31,6 +28,9 @@ function updateLanguage() {
         }
     });
 }
+
+// Apply default language on load
+updateLanguage();
 
 // ===========================
 // Mobile Menu
@@ -86,6 +86,20 @@ document.querySelectorAll('.feature, .flavour-card, .contact-card, .about-text p
     observer.observe(el);
 });
 
+// ===========================
+// Hero Image Spin on Click
+// ===========================
+const heroImage = document.querySelector('.hero-image');
+if (heroImage) {
+    heroImage.addEventListener('click', () => {
+        heroImage.classList.add('spin');
+    });
+    heroImage.addEventListener('animationend', () => {
+        heroImage.classList.remove('spin');
+    });
+}
+
+heroImage.click(); // Trigger initial spin on page load
 // ===========================
 // Smooth Scroll for Safari
 // ===========================
