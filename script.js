@@ -41,6 +41,7 @@ const navOverlay = document.getElementById('navOverlay');
 mobileMenuBtn.addEventListener('click', () => {
     mobileMenuBtn.classList.toggle('active');
     navOverlay.classList.toggle('open');
+    document.body.classList.toggle('no-scroll');
 });
 
 // Close mobile menu when clicking a link
@@ -48,6 +49,7 @@ navOverlay.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         mobileMenuBtn.classList.remove('active');
         navOverlay.classList.remove('open');
+        document.body.classList.remove('no-scroll');
     });
 });
 
