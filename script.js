@@ -36,18 +36,18 @@ function updateLanguage() {
 // Mobile Menu
 // ===========================
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-const navLinks = document.querySelector('.nav-links');
+const navOverlay = document.getElementById('navOverlay');
 
 mobileMenuBtn.addEventListener('click', () => {
     mobileMenuBtn.classList.toggle('active');
-    navLinks.classList.toggle('open');
+    navOverlay.classList.toggle('open');
 });
 
 // Close mobile menu when clicking a link
-navLinks.querySelectorAll('a').forEach(link => {
+navOverlay.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
         mobileMenuBtn.classList.remove('active');
-        navLinks.classList.remove('open');
+        navOverlay.classList.remove('open');
     });
 });
 

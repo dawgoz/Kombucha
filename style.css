@@ -31,7 +31,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 80px;
+    scroll-padding-top: 70px;
 }
 
 body {
@@ -78,6 +78,12 @@ ul {
     transition: var(--transition);
 }
 
+@media (max-width: 768px) {
+    .navbar {
+        background: var(--color-bg);
+    }
+}
+
 .navbar.scrolled {
     box-shadow: var(--shadow);
 }
@@ -101,6 +107,18 @@ ul {
 
 .logo span {
     color: var(--color-primary);
+}
+
+/* Nav Overlay - mobile menu panel, desktop inline nav */
+.nav-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 72px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    padding-right: max(24px, calc((100vw - var(--max-width)) / 2 + 24px));
 }
 
 .nav-links {
@@ -276,8 +294,21 @@ ul {
     height: 400px;
     border-radius: 50%;
     background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
-    opacity: 0.15;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
     animation: pulse 6s ease-in-out infinite;
+}
+
+.hero-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-circle.placeholder {
+    opacity: 0.15;
 }
 
 @keyframes pulse {
@@ -565,33 +596,42 @@ ul {
 }
 
 @media (max-width: 768px) {
-    .nav-links {
-        position: fixed;
+    .nav-overlay {
         top: 72px;
         left: 0;
         right: 0;
         bottom: 0;
-        background: rgba(250, 249, 246, 0.98);
-        backdrop-filter: blur(20px);
+        height: auto;
+        padding-right: 0;
+        background: var(--color-bg);
         flex-direction: column;
-        justify-content: center;
-        gap: 32px;
+        justify-content: flex-start;
+        align-items: center;
+        padding-top: 48px;
         opacity: 0;
         pointer-events: none;
         transition: opacity var(--transition);
     }
 
-    .nav-links.open {
+    .nav-overlay.open {
         opacity: 1;
         pointer-events: all;
     }
 
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+    }
+
     .nav-links a {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
     .mobile-menu-btn {
         display: flex;
+        z-index: 1001;
+        position: relative;
     }
 
     .hero {

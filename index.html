@@ -14,18 +14,6 @@
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <a href="#hero" class="logo">Kana <span>Kombucha</span></a>
-            <ul class="nav-links">
-                <li><a href="#about" data-en="About" data-lt="Apie mus">About</a></li>
-                <li><a href="#flavours" data-en="Flavours" data-lt="Skoniai">Flavours</a></li>
-                <li><a href="#contact" data-en="Contact" data-lt="Kontaktai">Contact</a></li>
-                <li>
-                    <button class="lang-toggle" id="langToggle" aria-label="Switch language">
-                        <span class="lang-option active" data-lang="en">EN</span>
-                        <span class="lang-separator">|</span>
-                        <span class="lang-option" data-lang="lt">LT</span>
-                    </button>
-                </li>
-            </ul>
             <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -33,6 +21,22 @@
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Navigation Overlay -->
+    <div class="nav-overlay" id="navOverlay">
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" data-en="About" data-lt="Apie mus">About</a></li>
+            <li><a href="#flavours" data-en="Flavours" data-lt="Skoniai">Flavours</a></li>
+            <li><a href="#contact" data-en="Contact" data-lt="Kontaktai">Contact</a></li>
+            <li>
+                <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+                    <span class="lang-option active" data-lang="en">EN</span>
+                    <span class="lang-separator">|</span>
+                    <span class="lang-option" data-lang="lt">LT</span>
+                </button>
+            </li>
+        </ul>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="hero">
@@ -43,7 +47,9 @@
             <a href="#flavours" class="btn-primary" data-en="Explore Flavours" data-lt="Atraskite skonius">Explore Flavours</a>
         </div>
         <div class="hero-visual">
-            <div class="hero-circle"></div>
+            <div class="hero-circle">
+                <img src="images/image.png" alt="Kana Kombucha Bottle" onerror="this.style.display='none'; this.parentElement.classList.add('placeholder');">
+            </div>
         </div>
     </section>
 
