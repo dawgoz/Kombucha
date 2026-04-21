@@ -49,10 +49,6 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-body.no-scroll {
-    overflow: hidden;
-}
-
 img {
     max-width: 100%;
     display: block;
@@ -798,9 +794,9 @@ ul {
         gap: 48px;
     }
 
-    /* .about-text p:first-child::first-letter {
+    .about-text p:first-child::first-letter {
         font-size: 2.8rem;
-    } */
+    }
 
     .flavours {
         padding: 100px 0;
