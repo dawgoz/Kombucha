@@ -242,7 +242,12 @@ ul {
 }
 
 .mobile-menu-btn:hover {
-    background: var(--color-bg-alt);
+    /* background: var(--color-bg-alt); */
+}
+
+.mobile-menu-btn:focus:not(:focus-visible) {
+    outline: none;
+    background: none;
 }
 
 .mobile-menu-btn span {
@@ -679,6 +684,13 @@ ul {
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: #fff;
+}
+
+.carousel-arrow:focus:not(:focus-visible) {
+    outline: none;
+    background: var(--color-surface);
+    border-color: var(--color-bg-alt);
+    color: var(--color-text-light);
 }
 
 .carousel-dots {
