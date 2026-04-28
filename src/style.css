@@ -241,9 +241,6 @@ ul {
     transition: background var(--transition-fast);
 }
 
-.mobile-menu-btn:hover {
-    /* background: var(--color-bg-alt); */
-}
 
 .mobile-menu-btn:focus:not(:focus-visible) {
     outline: none;
@@ -949,23 +946,47 @@ ul {
         align-items: center;
         padding-top: calc(72px + 48px);
         opacity: 0;
+        transform: translateY(-16px);
         pointer-events: none;
-        transition: opacity var(--transition);
+        transition: opacity 0.35s ease-in-out, transform 0.35s ease-in-out;
     }
 
-    .nav-overlay.open {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    /* Hero image background in open menu when not scrolled */
-    .nav-overlay.open:not(.scrolled) {
+    /* Hero image layer via pseudo-element so it can transition */
+    .nav-overlay:not(.scrolled)::before {
+        content: '';
+        position: absolute;
+        inset: 0;
         background-image: linear-gradient(
             rgba(20, 20, 18, 0.72),
             rgba(20, 20, 18, 0.72)
         ), url('/images/image.png');
         background-size: cover;
         background-position: center 40%;
+        opacity: 0;
+        transition: opacity 0.35s ease-out;
+        z-index: 0;
+        pointer-events: none;
+    }
+
+    .nav-overlay:not(.scrolled).open::before {
+        opacity: 1;
+    }
+
+    /* Push links above the pseudo-element */
+    .nav-overlay .nav-links,
+    .nav-overlay .lang-toggle {
+        position: relative;
+        z-index: 1;
+    }
+
+    .nav-overlay.open {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: all;
+    }
+
+    /* Hero image background in open menu when not scrolled */
+    .nav-overlay.open:not(.scrolled) {
         background-color: transparent;
     }
 
@@ -997,6 +1018,11 @@ ul {
 
     .nav-links a {
         font-size: 1.4rem;
+        transition: color 0.35s ease-in-out;
+    }
+
+    .nav-overlay .lang-toggle {
+        transition: color 0.35s ease-in-out, background 0.35s ease-in-out, border-color 0.35s ease-in-out;
     }
 
     .mobile-menu-btn {
