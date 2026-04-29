@@ -205,6 +205,10 @@ ul {
     transform-origin: left;
 }
 
+.nav-overlay.scrolled .nav-links a::after {
+    background: var(--color-primary);
+}
+
 .lang-toggle {
     background: var(--color-surface);
     border: 1.5px solid var(--color-bg-alt);
